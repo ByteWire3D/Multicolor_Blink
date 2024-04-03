@@ -1,3 +1,9 @@
+/*
+this file is write by byteWire3d for easy acces to the build in rgb led, 
+this library is not at all reseved for the nrf52840 but is what is coded it for.
+*/
+
+
 //The NRF52840 rgb led uses a not gate to drive the leds, so high = led_off and low = led_on
 //The analog rgb also is infurtud so 255 is 0 and 0 = 255
 
