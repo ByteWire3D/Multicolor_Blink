@@ -1,68 +1,11 @@
-/*
-this file is write by byteWire3d for easy acces to the build in rgb led, 
-this library is not at all reseved for the nrf52840 but is what is coded it for.
-*/
-
-
-//The NRF52840 rgb led uses a not gate to drive the leds, so high = led_off and low = led_on
-//The analog rgb also is infurtud so 255 is 0 and 0 = 255
-
+#include "multicolor_blink.h"
 
 #define LED_MAX_DIM 255
-
 
 unsigned long previousMillis = 0;
 unsigned long currentMillis;
 int led_state = LOW;
-
-//
-/*
-All optional fuctions:
-  Blink_Order();
-  Millis_Blink();
-  LED_ON();
-  LED_OFF();
-  ALL_MILLIS_Blink();
-  Red_Green_Blue_Test();
-  All_Colours_Blink();
-  LED_Blink();
-  DIM_LED(); // only accepts RGB
-
- Handy fuctions: 
-  Blink_Order();
-  Millis_Blink();
-  LED_ON();
-  LED_OFF();
-
- Test fuctions:
-  ALL_MILLIS_Blink();
-  Red_Green_Blue_Test();
-  All_Colours_Blink();
-  LED_Blink();
-  DIM_LED();
-*/
 int count = 0;
-void setup() {
-  Serial.begin(115200);
-  pinMode(LED_RED, OUTPUT);    //red light output
-  pinMode(LED_BLUE, OUTPUT);   // bluee light output
-  pinMode(LED_GREEN, OUTPUT);  //green light output
-}
-
-void loop() {
-  //ALL_MILLIS_Blink(7);
-  //Red_Green_Blue_Test();
-  //All_Colours_Blink();
-  //LED_Blink("YELLOW", 1000);
- // DIM_LED("BLUE");
-  /*
-  String colors_blink_order[7] = { "WHITE", "RED", "YELLOW", "PURPLE", "RED", "BLUE", "GREEN" };
-  Blink_Order(7, colors_blink_order);  // CLORORS MILLS BLINK
-
-  ALL_MILLIS_Blink(7);  //ALL COLORS MILLIS BLINK
-  */
-}
-
 
 void Blink_Order(int num_fuctions, String list_blink_order[]) {
   while (count <= num_fuctions) {
@@ -74,25 +17,6 @@ void Blink_Order(int num_fuctions, String list_blink_order[]) {
   }
 }
 
-//RGB COLLORS:
-/*
-void RGB_LED(int R, int G, int B) {
-  analogWrite(LED_RED, R);
-  analogWrite(LED_GREEN, G);
-  analogWrite(LED_BLUE, B);
-}
-void RGB_Blink(int R, int G, int B, int Blink){
-  analogWrite(LED_RED, R);
-  analogWrite(LED_GREEN, G);
-  analogWrite(LED_BLUE, B);
-  delay(Blink);
-  LED_OFF();
-  delay(Blink);
-}
-void RGB_Blink_Millis (int R, int G, int B, int Blink){
-  //
-}
-*/
 // MILIS() blink:
 void Millis_Blink(String color, int millis_blink_duration) {
   currentMillis = millis();
@@ -180,15 +104,15 @@ void ALL_MILLIS_Blink(int num_fuctions) {
       break;
     case 4:
       Millis_Blink("PURPLE", 1000);
-      Serial.println("putple");
+      Serial.println("purple");
       break;
     case 5:
       Millis_Blink("BLUEGREEN", 1000);
-      Serial.println("bluegeem");
+      Serial.println("bluegreen");
       break;
     case 6:
       Millis_Blink("WHITE", 1000);
-      Serial.println("whit");
+      Serial.println("white");
       break;
   }
   if (count == num_fuctions) {
